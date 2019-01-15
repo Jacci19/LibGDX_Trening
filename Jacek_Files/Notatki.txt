@@ -1,0 +1,11 @@
+Instrukcja konfiguracji libGDX
+
+1. Ściagnij AndroidStudio (lub chociaż androidSDK
+2. Ściągnij i odpal plik "gdx-setup.jar"  (https://libgdx.badlogicgames.com/download.html)
+3.  Wypełniamy odpowiednie pola
+4. Jak znaleźć ścieżkę do android SDK? Odpal Android Studio. Na małym głównym oknie na dole
+kliknij "Configure  -> SDK Manager". Pojawi się okno. Na górze jest podana ścieżka do Android SDK.
+5. W oknie warning (android api ver) wybałem "Yes". (gdy wziąłem ną było failed)
+6. Czekamy.
+7. Jeśli mamy Build Successful to w IntellijIdea otwieramy ten projekt z build.gradle. Klikam potem
+"Open as project", potem "OK".

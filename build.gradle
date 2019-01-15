@@ -23,8 +23,8 @@ allprojects {
     version = '1.0'
     ext {
         appName = "TutorialClicker"
-        gdxVersion = '1.9.9'
-        roboVMVersion = '2.3.5'
+        gdxVersion = '1.9.3'                //zmieniłem z '1.9.9'  (https://youtu.be/LyrFg_Y0MYs?list=PLFq6ri1W22hwmA0FzkR5zPPOnsimwUc9P&t=607)
+        roboVMVersion = '2.3.5'             //tu możesz zmienić na 2.1.0 żeby było tak jak w kursie
         box2DLightsVersion = '1.4'
         ashleyVersion = '1.7.0'
         aiVersion = '1.8.0'

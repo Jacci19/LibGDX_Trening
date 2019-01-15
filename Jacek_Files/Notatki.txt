@@ -1,11 +1,22 @@
+Projekt robiony na podstawie kursu LibGDX z youtube: https://www.youtube.com/watch?v=LyrFg_Y0MYs&list=PLFq6ri1W22hwmA0FzkR5zPPOnsimwUc9P&index=2
+
+https://github.com/JavaDevMatt/tutorialclicker/tree/tut2
+
 Instrukcja konfiguracji libGDX
 
 1. Ściagnij AndroidStudio (lub chociaż androidSDK
 2. Ściągnij i odpal plik "gdx-setup.jar"  (https://libgdx.badlogicgames.com/download.html)
-3.  Wypełniamy odpowiednie pola
+3.  Wypełniamy odpowiednie pola  (możesz wykorzystać printscreenscreen
 4. Jak znaleźć ścieżkę do android SDK? Odpal Android Studio. Na małym głównym oknie na dole
 kliknij "Configure  -> SDK Manager". Pojawi się okno. Na górze jest podana ścieżka do Android SDK.
 5. W oknie warning (android api ver) wybałem "Yes". (gdy wziąłem ną było failed)
 6. Czekamy.
 7. Jeśli mamy Build Successful to w IntellijIdea otwieramy ten projekt z build.gradle. Klikam potem
 "Open as project", potem "OK".
+
+
+Główny main jest w desktop\src\pl.jacc.desktop\DesktopLauncher.java
+Musiałem poprawić ścieżke do badlogic.jpg.
+Żeby commit się powiódł w "project structure musiałem wybrac opcję Module SDK na "Android API 28 Platform"
+
+Zmieniłem wersję gdx na 1.9.3 (wg kursu). Gradle sam sobie ściąga odpowiednią wersję.

@@ -18,16 +18,9 @@ public class TutorialClickerGame extends Game {
 	@Override
 	public void create () {
 		this.setScreen(new SplashScreen(this));
-		//batch = new SpriteBatch();
-		//img = new Texture("android/assets/badlogic.jpg");
 	}
 
 
-	//	@Override
-//	public void dispose () {
-//		batch.dispose();
-//		img.dispose();
-//	}
 
 	//Gettery i settery
 

@@ -31,7 +31,7 @@ public abstract class AbstractScreen implements Screen {
     }
 
     @Override
-    public void render(float delta) {
+    public void render(float delta) {                                                   //to będzie sie działo w każdej klatce
         clearScreen();
         camera.update();
         spriteBatch.setProjectionMatrix(camera.combined);
@@ -48,7 +48,7 @@ public abstract class AbstractScreen implements Screen {
     }
 
     @Override
-    public void resume() {
+    public void resume() {                                                                 //jak się wejdzie na grę z tła (z innego okna na pulpicie)
         game.setPaused(false);
     }
 

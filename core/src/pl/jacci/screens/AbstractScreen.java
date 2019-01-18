@@ -1,4 +1,4 @@
-package pl.screens;
+package pl.jacci.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;

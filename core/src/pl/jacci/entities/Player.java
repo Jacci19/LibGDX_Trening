@@ -1,4 +1,4 @@
-package pl.entities;
+package pl.jacci.entities;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;

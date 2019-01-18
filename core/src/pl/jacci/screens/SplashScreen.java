@@ -1,4 +1,4 @@
-package pl.screens;
+package pl.jacci.screens;
 
 /** splashscreen to obrazek który pojawia się przed właściwą aplikacją
  * https://github.com/JavaDevMatt/tutorialclicker/blob/tut3/core/src/pl/javadevmatt/tutorialclicker/screens/SplashScreen.java

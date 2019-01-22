@@ -19,4 +19,7 @@ public class Player extends Image {
         // starting position
         this.setPosition(STARTING_X, STARTING_Y);
     }
+
+    public void reactOnClick() {
+    }
 }

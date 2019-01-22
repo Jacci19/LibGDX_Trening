@@ -1,8 +1,11 @@
 package pl.jacci.screens;
 
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Button.ButtonStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import pl.jacci.entities.Player;
 import pl.jacci.TutorialClickerGame;
@@ -12,6 +15,7 @@ public class GameplayScreen extends AbstractScreen {
 
     private Player player;
     private Button playerButton;
+    private Label scorelabel;
 
     public GameplayScreen(TutorialClickerGame game) {
         super(game);
@@ -21,7 +25,9 @@ public class GameplayScreen extends AbstractScreen {
     protected void init(){
         initPlayer();
         initPlayerButton();
+        initScorelabel();
     }
+
 
     private void initPlayer() {
         player = new Player();
@@ -52,12 +58,22 @@ public class GameplayScreen extends AbstractScreen {
         });
     }
 
+    private void initScorelabel() {
+        LabelStyle labelStyle = new LabelStyle();
+        labelStyle.font = new BitmapFont();
+        scorelabel = new Label("0", labelStyle);
+        scorelabel.setX(20);
+        scorelabel.setY(650);
+        stage.addActor(scorelabel);
+    }
+
+
 
     @Override
     public void render(float delta) {
         super.render(delta);
         update();
-        System.out.println("Points: " + game.getPoints());
+        //System.out.println("Points: " + game.getPoints());
 
         spriteBatch.begin();
         stage.draw();

@@ -15,6 +15,7 @@ public class GameplayScreen extends AbstractScreen {
 
     private Player player;
     private Button playerButton;
+    private Button resetScoreButton;
     private Label scorelabel;
 
     public GameplayScreen(TutorialClickerGame game) {
@@ -25,9 +26,9 @@ public class GameplayScreen extends AbstractScreen {
     protected void init(){
         initPlayer();
         initPlayerButton();
+        initResetScoreButton();
         initScorelabel();
     }
-
 
     private void initPlayer() {
         player = new Player();
@@ -48,15 +49,32 @@ public class GameplayScreen extends AbstractScreen {
 
             @Override                                                         //touchDown - akcja po kliknięciu
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-
                 player.reactOnClick();
                 game.addPoint();
-
                 return super.touchDown(event, x, y, pointer, button);
             }
-
         });
     }
+
+    private void initResetScoreButton() {
+        resetScoreButton = new Button(new ButtonStyle());
+        resetScoreButton.setWidth(100);
+        resetScoreButton.setHeight(100);
+        resetScoreButton.setX(330);
+        resetScoreButton.setY(560);
+        resetScoreButton.setDebug(true);
+
+        stage.addActor(resetScoreButton);
+
+        resetScoreButton.addListener(new ClickListener(){
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                game.resetGameScore();
+                return super.touchDown(event, x, y, pointer, button);
+            }
+        });
+    }
+
 
     private void initScorelabel() {
         LabelStyle labelStyle = new LabelStyle();
@@ -73,8 +91,6 @@ public class GameplayScreen extends AbstractScreen {
     public void render(float delta) {
         super.render(delta);
         update();
-        //System.out.println("Points: " + game.getPoints());
-
         spriteBatch.begin();
         stage.draw();
         spriteBatch.end();

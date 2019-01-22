@@ -34,10 +34,19 @@ public class TutorialClickerGame extends Game {
 
 	public void addPoint(){
 		points++;
+		updateScoreInPref();
+	}
+
+
+	public void resetGameScore() {
+		points = 0;
+		updateScoreInPref();
+	}
+
+	private void updateScoreInPref() {
 		prefs.putInteger(GAME_SCORE, points);			//zapis stanu punktów do prefa
 		prefs.flush();									//aktualizacja danych prefa na lokalny dysk twardy (aby nie zginęły po zamknięciu programu)
 	}
-
 
 
 	//Gettery i settery
@@ -53,4 +62,5 @@ public class TutorialClickerGame extends Game {
 	public int getPoints() {
 		return points;
 	}
+
 }

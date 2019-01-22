@@ -20,3 +20,6 @@ Musiałem poprawić ścieżke do badlogic.jpg.
 Żeby commit się powiódł w "project structure musiałem wybrac opcję Module SDK na "Android API 28 Platform"
 
 Zmieniłem wersję gdx na 1.9.3 (wg kursu). Gradle sam sobie ściąga odpowiednią wersję.
+
+
+cherry pick - polecenie w git do wrzucenia danego commita do danego branchu

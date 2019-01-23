@@ -1,13 +1,11 @@
 package pl.jacci.screens;
 
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import pl.jacci.entities.Player;
 import pl.jacci.TutorialClickerGame;
 import pl.jacci.ui.IClickCallback;
 import pl.jacci.ui.PlayerButton;
 import pl.jacci.ui.ResetScoreButton;
+import pl.jacci.ui.ScoreLabel;
 
 
 public class GameplayScreen extends AbstractScreen {
@@ -15,7 +13,7 @@ public class GameplayScreen extends AbstractScreen {
     private Player player;
     private PlayerButton playerButton;
     private ResetScoreButton resetScoreButton;
-    private Label scorelabel;
+    private ScoreLabel scorelabel;
 
     public GameplayScreen(TutorialClickerGame game) {
         super(game);
@@ -52,22 +50,13 @@ public class GameplayScreen extends AbstractScreen {
                 game.resetGameScore();
             }
         });
-
         stage.addActor(resetScoreButton);
-
     }
-
 
     private void initScorelabel() {
-        LabelStyle labelStyle = new LabelStyle();
-        labelStyle.font = new BitmapFont();
-        scorelabel = new Label("0", labelStyle);
-        scorelabel.setX(20);
-        scorelabel.setY(650);
+        scorelabel = new ScoreLabel();
         stage.addActor(scorelabel);
     }
-
-
 
     @Override
     public void render(float delta) {

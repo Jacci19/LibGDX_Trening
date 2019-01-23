@@ -1,6 +1,7 @@
 package pl.jacci.screens;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import pl.jacci.entities.Player;
 import pl.jacci.TutorialClickerGame;
 import pl.jacci.ui.IClickCallback;
@@ -11,7 +12,7 @@ import pl.jacci.ui.ScoreLabel;
 
 public class GameplayScreen extends AbstractScreen {
 
-    private Texture bgTexture;
+    private Image bgImage;
     private Player player;
     private PlayerButton playerButton;
     private ResetScoreButton resetScoreButton;
@@ -23,11 +24,16 @@ public class GameplayScreen extends AbstractScreen {
 
     @Override
     protected void init(){
-        bgTexture = new Texture("android/assets/bg.png");
+        initBg();
         initPlayer();
         initPlayerButton();
         initResetScoreButton();
         initScorelabel();
+    }
+
+    private void initBg() {
+        bgImage = new Image(new Texture("android/assets/bg.png"));
+        stage.addActor(bgImage);
     }
 
     private void initPlayer() {
@@ -65,10 +71,6 @@ public class GameplayScreen extends AbstractScreen {
     public void render(float delta) {
         super.render(delta);
         update();
-
-        spriteBatch.begin();
-        spriteBatch.draw(bgTexture, 0, 0);
-        spriteBatch.end();
 
         spriteBatch.begin();
         stage.draw();

@@ -9,12 +9,14 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import pl.jacci.entities.Player;
 import pl.jacci.TutorialClickerGame;
+import pl.jacci.ui.IClickCallback;
+import pl.jacci.ui.PlayerButton;
 
 
 public class GameplayScreen extends AbstractScreen {
 
     private Player player;
-    private Button playerButton;
+    private PlayerButton playerButton;
     private Button resetScoreButton;
     private Label scorelabel;
 
@@ -36,24 +38,14 @@ public class GameplayScreen extends AbstractScreen {
     }
 
     private void initPlayerButton() {
-        playerButton = new Button(new ButtonStyle());
-        playerButton.setWidth(460);
-        playerButton.setHeight(360);
-        playerButton.setX(10);
-        playerButton.setY(170);
-        playerButton.setDebug(true);                    //jeśli btn jest niewidoczny, to żeby go było widać (niebieski prostokąt)
-
-        stage.addActor(playerButton);
-
-        playerButton.addListener(new ClickListener(){
-
-            @Override                                                         //touchDown - akcja po kliknięciu
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+        playerButton = new PlayerButton(new IClickCallback() {
+            @Override
+            public void onClick() {
                 player.reactOnClick();
                 game.addPoint();
-                return super.touchDown(event, x, y, pointer, button);
             }
         });
+        stage.addActor(playerButton);
     }
 
     private void initResetScoreButton() {

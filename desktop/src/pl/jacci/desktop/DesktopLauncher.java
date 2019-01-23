@@ -1,5 +1,10 @@
 package pl.jacci.desktop;
 
+/**     Wykorzystanie LibGDX  do stworzenie dry : tutorialClicker
+ * https://www.youtube.com/watch?v=1fT1-e377Ws&index=1&list=PLFq6ri1W22hwmA0FzkR5zPPOnsimwUc9P
+ * https://github.com/JavaDevMatt/tutorialclicker/tree/tut8
+ */
+
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import pl.jacci.TutorialClickerGame;

@@ -18,7 +18,7 @@ public class PlayerButton extends Button {
         this.setHeight(360);
         this.setX(10);
         this.setY(170);
-        this.setDebug(true);                    //jeśli btn jest niewidoczny, to żeby go było widać (niebieski prostokąt)
+       // this.setDebug(true);                    //jeśli btn jest niewidoczny, to żeby go było widać (niebieski prostokąt)
 
         this.addListener(new ClickListener(){
             @Override                                                         //touchDown - akcja po kliknięciu

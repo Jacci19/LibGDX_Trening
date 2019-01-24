@@ -2,7 +2,9 @@ package pl.jacci.screens;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import pl.jacci.entities.FlyingObject;
 import pl.jacci.entities.Player;
+import pl.jacci.entities.FlyingObject.FlyingObjectType;
 import pl.jacci.TutorialClickerGame;
 import pl.jacci.ui.*;
 
@@ -31,7 +33,7 @@ public class GameplayScreen extends AbstractScreen {
     }
 
     private void initFlyingObjects() {
-        flyingObject1 = new FlyingObject(FlyingObject.MONEY);
+        flyingObject1 = new FlyingObject(FlyingObjectType.PASSIVE, game);
         stage.addActor(flyingObject1);
         flyingObject1.fly();
     }

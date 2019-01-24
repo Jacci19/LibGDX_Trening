@@ -37,6 +37,11 @@ public class TutorialClickerGame extends Game {
 		updateScoreInPref();
 	}
 
+	public void addPoints(int pointsToAdd){
+		points += pointsToAdd;
+		updateScoreInPref();
+	}
+
 
 	public void resetGameScore() {
 		points = 0;
@@ -48,6 +53,10 @@ public class TutorialClickerGame extends Game {
 		prefs.flush();									//aktualizacja danych prefa na lokalny dysk twardy (aby nie zginęły po zamknięciu programu)
 	}
 
+	public void addPassiveIncome() {
+		//TODO add passive
+		System.out.println("passive income click");
+	}
 
 	//Gettery i settery
 

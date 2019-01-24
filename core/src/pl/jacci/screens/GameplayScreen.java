@@ -4,10 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import pl.jacci.entities.Player;
 import pl.jacci.TutorialClickerGame;
-import pl.jacci.ui.IClickCallback;
-import pl.jacci.ui.PlayerButton;
-import pl.jacci.ui.ResetScoreButton;
-import pl.jacci.ui.ScoreLabel;
+import pl.jacci.ui.*;
 
 
 public class GameplayScreen extends AbstractScreen {
@@ -17,6 +14,7 @@ public class GameplayScreen extends AbstractScreen {
     private PlayerButton playerButton;
     private ResetScoreButton resetScoreButton;
     private ScoreLabel scorelabel;
+    private FlyingObject flyingObject1;
 
     public GameplayScreen(TutorialClickerGame game) {
         super(game);
@@ -29,6 +27,13 @@ public class GameplayScreen extends AbstractScreen {
         initPlayerButton();
         initResetScoreButton();
         initScorelabel();
+        initFlyingObjects();
+    }
+
+    private void initFlyingObjects() {
+        flyingObject1 = new FlyingObject(FlyingObject.MONEY);
+        stage.addActor(flyingObject1);
+        flyingObject1.fly();
     }
 
     private void initBg() {

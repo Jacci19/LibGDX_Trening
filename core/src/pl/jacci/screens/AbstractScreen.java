@@ -73,3 +73,5 @@ public abstract class AbstractScreen implements Screen {
     }
 
 }
+
+/** StretchViewport - zapewnia nam to, że na każdym urządzeniu stage będzie rozciągany na cały rozmiar ekranu */

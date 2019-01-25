@@ -14,11 +14,11 @@ public class FlyingObject extends Image {
         MONEY, PASSIVE
     }
 
-    public final static String MONEY = "android/assets/money.png";
-    public final static String BOOKS = "android/assets/books.png";
+    public final static String MONEY = "android/assets/flying_img/money70.png";
+    public final static String BOOKS = "android/assets/flying_img/books70.png";
 
-    private final static int WIDHT = 150;
-    private final static int HEIGHT = 150;
+    private final static int WIDHT = 70;
+    private final static int HEIGHT = 70;
 
     private final static int STARTING_X = 0;
     private final static int STARTING_Y = -100;

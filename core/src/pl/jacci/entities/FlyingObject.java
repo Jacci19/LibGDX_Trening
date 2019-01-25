@@ -47,10 +47,7 @@ public class FlyingObject extends Image {
         this.addListener(new ClickListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-
-
                 reactOnClick();
-
                 return super.touchDown(event, x, y, pointer, button);
             }
         });
@@ -58,7 +55,7 @@ public class FlyingObject extends Image {
 
     private void playSpawnSound() {
         if(FlyingObjectType.MONEY.equals(type)){
-            game.playMoneySound();
+            game.getSoundService().playMoneySound();
         }
     }
 

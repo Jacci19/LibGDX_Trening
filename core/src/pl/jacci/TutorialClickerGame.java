@@ -3,6 +3,7 @@ package pl.jacci;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
+import com.badlogic.gdx.audio.Sound;
 import pl.jacci.screens.SplashScreen;
 
 public class TutorialClickerGame extends Game {
@@ -13,6 +14,7 @@ public class TutorialClickerGame extends Game {
 	public final static int WIDTH = 480;
 	public final static int HEIGHT = 700;
 
+	private Sound moneySound;
 	private boolean paused;
 	private int points;
 	private Preferences prefs;			//umożliwa zapisanie danych które nie giną po zamknięciu programu (tu wykorzystamy to do zapisywania punktów)
@@ -23,9 +25,14 @@ public class TutorialClickerGame extends Game {
 		this.setScreen(new SplashScreen(this));
 	}
 
+	public void playMoneySound(){
+		moneySound.play();
+	}
+
 	private void init(){
 		prefs = Gdx.app.getPreferences(GAME_PREFS);
 		loadScore();
+		moneySound = Gdx.audio.newSound(Gdx.files.internal("android/assets/sound/money1.mp3"));
 	}
 
 	private void loadScore() {

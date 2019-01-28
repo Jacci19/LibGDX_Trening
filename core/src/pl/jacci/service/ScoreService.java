@@ -54,10 +54,13 @@ public class ScoreService {
     public void addPassiveIncome() {
         passiveIncome++;
         updateSavedScoreAndPassiveIncomeInPrefs();
-        System.out.println("passive income click");
     }
 
     public int getPoints() {
         return points;
+    }
+
+    public int getPassiveIncome() {
+        return passiveIncome;
     }
 }

@@ -5,6 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import pl.jacci.controllers.FlyingObjectController;
 import pl.jacci.entities.Player;
 import pl.jacci.TutorialClickerGame;
+import pl.jacci.service.PassiveIncomeService;
 import pl.jacci.ui.*;
 
 
@@ -16,6 +17,7 @@ public class GameplayScreen extends AbstractScreen {
     private ResetScoreButton resetScoreButton;
     private ScoreLabel scorelabel;
     private FlyingObjectController flyingObjectController;
+    private PassiveIncomeService passiveIncomeService;
 
     public GameplayScreen(TutorialClickerGame game) {
         super(game);
@@ -29,7 +31,24 @@ public class GameplayScreen extends AbstractScreen {
         initResetScoreButton();
         initScorelabel();
         initFlyingObjectController();
+        initPassiveIncomeService();
         startTheMusic();
+    }
+
+    @Override
+    public void render(float delta) {
+        super.render(delta);
+        update();
+
+        spriteBatch.begin();
+        stage.draw();
+        spriteBatch.end();
+    }
+
+
+    private void initPassiveIncomeService() {
+        passiveIncomeService = new PassiveIncomeService(game.getScoreService());
+        passiveIncomeService.start();
     }
 
     private void startTheMusic() {
@@ -75,16 +94,6 @@ public class GameplayScreen extends AbstractScreen {
     private void initScorelabel() {
         scorelabel = new ScoreLabel();
         stage.addActor(scorelabel);
-    }
-
-    @Override
-    public void render(float delta) {
-        super.render(delta);
-        update();
-
-        spriteBatch.begin();
-        stage.draw();
-        spriteBatch.end();
     }
 
     private void update() {

@@ -23,3 +23,8 @@ Zmieniłem wersję gdx na 1.9.3 (wg kursu). Gradle sam sobie ściąga odpowiedni
 
 
 cherry pick - polecenie w git do wrzucenia danego commita do danego branchu
+
+
+Aby uruchomić ten projekt na kompi w domu:
+1. Urochimiłem intellij z opcją checkout from version control. Wkleiłem tytuł "LibGdx_Trening" i link do gita i uruchomiłem.
+2. Przed otwarciem projektu w intellij z pliku build.gradle skopiowałem do katalogu LibGdx_Trening plik local.properties zawierający ścieżkę do Android SDK.

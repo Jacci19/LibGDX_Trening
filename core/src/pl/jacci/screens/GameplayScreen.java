@@ -45,6 +45,12 @@ public class GameplayScreen extends AbstractScreen {
         spriteBatch.end();
     }
 
+    @Override
+    public void pause() {
+        super.pause();
+        game.getScoreService().saveCurrentTimestamp();
+        // TODO make flush of ScoreService always on screen pause()
+    }
 
     private void initPassiveIncomeService() {
         passiveIncomeService = new PassiveIncomeService(game.getScoreService());

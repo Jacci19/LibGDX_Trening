@@ -2,11 +2,14 @@ package pl.jacci.service;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
+import com.badlogic.gdx.utils.TimeUtils;
+import java.util.concurrent.TimeUnit;
 
 public class ScoreService {
     public final static String GAME_PREFS = "pl.jacci.tutorialClicker.prefs";			//Scieżka do zapisu nazwy, konwencja nazwy: package + nazwa projektu + prefs
     public final static String GAME_SCORE = "pl.jacci.tutorialClicker.prefs.score";		//'plik' w ścieżce do zapisu określonej wartości
     public final static String GAME_PASSIVE_INCOME = "pl.jacci.tutorialClicker.prefs.passiveincome";
+    public final static String GAME_SAVED_TIMESTAMP = "pl.jacci.tutorialClicker.prefs.savedtimestamp";   //zawiera dochód zdobyty podczas wyłączonej aplikacji
 
     private Preferences prefs;                                  //umożliwa zapisanie danych które nie giną po zamknięciu programu (tu wykorzystamy to do zapisywania punktów)
     private int points;
@@ -19,6 +22,19 @@ public class ScoreService {
     private void init() {
         prefs =  Gdx.app.getPreferences(GAME_PREFS);
         loadScore();
+        loadPassiveIncome();
+        calculateGainedPassiveIncome();
+    }
+
+    private void calculateGainedPassiveIncome() {
+        long savedTimestamp = getSavedTimestamp();
+        if(savedTimestamp > 0){                                                         //jeśli były już wcześniej zapisane timestampy...
+            long millisPassed = TimeUtils.timeSinceMillis(savedTimestamp);
+            long seconds = TimeUnit.MILLISECONDS.toSeconds(millisPassed);
+            System.out.println("Passed seconds:" + seconds);
+        } else {
+            // do nothing
+        }
     }
 
     private void loadScore() {
@@ -56,6 +72,19 @@ public class ScoreService {
         updateSavedScoreAndPassiveIncomeInPrefs();
     }
 
+    private long getSavedTimestamp(){
+        return prefs.getLong(GAME_SAVED_TIMESTAMP);
+    }
+
+    public void saveCurrentTimestamp() {
+        prefs.putLong(GAME_SAVED_TIMESTAMP, TimeUtils.millis());                 //zapisuje do prefsa ilość milisekund od 1.01.1970 do teraz
+        prefs.flush();
+    }
+
+
+
+    //GETTERY_______________________________________
+
     public int getPoints() {
         return points;
     }
@@ -63,4 +92,21 @@ public class ScoreService {
     public int getPassiveIncome() {
         return passiveIncome;
     }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

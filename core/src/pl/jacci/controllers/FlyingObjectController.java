@@ -18,7 +18,7 @@ public class FlyingObjectController {
         Timer.schedule(new Timer.Task() {
 
             @Override
-            public void run() {                             //https://youtu.be/hAn4k0kut8U?list=PLFq6ri1W22hwmA0FzkR5zPPOnsimwUc9P&t=1482
+            public void run() {                                     //https://youtu.be/hAn4k0kut8U?list=PLFq6ri1W22hwmA0FzkR5zPPOnsimwUc9P&t=1482
                 Timer.schedule(new Timer.Task() {
                     @Override
                     public void run() {                             //będzie to powtarzane co czas spawnTime

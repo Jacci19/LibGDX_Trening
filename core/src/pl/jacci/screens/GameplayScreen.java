@@ -48,8 +48,7 @@ public class GameplayScreen extends AbstractScreen {
     @Override
     public void pause() {
         super.pause();
-        game.getScoreService().saveCurrentTimestamp();
-        // TODO make flush of ScoreService always on screen pause()
+        game.getScoreService().saveCurrentGameState();
     }
 
     private void initPassiveIncomeService() {

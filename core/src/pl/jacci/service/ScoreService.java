@@ -35,39 +35,32 @@ public class ScoreService {
 
     public void addPoints(int pointsToAdd){
         points += pointsToAdd;
-        updateSavedScoreAndPassiveIncomeInPrefs();
     }
 
     public void addPoint(){
         points++;
-        updateSavedScoreAndPassiveIncomeInPrefs();
     }
 
     public void resetGameScore() {
         points = 0;
         passiveIncome = 0;
-        updateSavedScoreAndPassiveIncomeInPrefs();
-    }
-
-    private void updateSavedScoreAndPassiveIncomeInPrefs() {
-        prefs.putInteger(GAME_SCORE, points);			                //zapis stanu punktów do prefa
-        prefs.putInteger(GAME_PASSIVE_INCOME, passiveIncome);			//zapis stanu pasywnego dochodu do prefa
-        prefs.flush();									                //aktualizacja danych prefa na lokalny dysk twardy (aby nie zginęły po zamknięciu programu)
     }
 
     public void addPassiveIncome() {
         passiveIncome++;
-        updateSavedScoreAndPassiveIncomeInPrefs();
     }
 
     public long getSavedTimestamp(){
         return prefs.getLong(GAME_SAVED_TIMESTAMP);
     }
 
-    public void saveCurrentTimestamp() {
-        prefs.putLong(GAME_SAVED_TIMESTAMP, TimeUtils.millis());                 //zapisuje do prefsa ilość milisekund od 1.01.1970 do teraz
-        prefs.flush();
+    public void saveCurrentGameState() {
+        prefs.putLong(GAME_SAVED_TIMESTAMP, TimeUtils.millis());        //zapisuje do prefsa ilość milisekund od 1.01.1970 do teraz
+        prefs.putInteger(GAME_SCORE, points);			                //zapis stanu punktów do prefa
+        prefs.putInteger(GAME_PASSIVE_INCOME, passiveIncome);			//zapis stanu pasywnego dochodu do prefa
+        prefs.flush();									                //aktualizacja danych prefa na lokalny dysk twardy (aby nie zginęły po zamknięciu programu)
     }
+
 
 
 

@@ -3,6 +3,7 @@ package pl.jacci.screens;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import pl.jacci.controllers.FlyingObjectController;
+import pl.jacci.controllers.RandomEventController;
 import pl.jacci.entities.Player;
 import pl.jacci.TutorialClickerGame;
 import pl.jacci.service.PassiveIncomeService;
@@ -17,6 +18,7 @@ public class GameplayScreen extends AbstractScreen {
     private ResetScoreButton resetScoreButton;
     private GameLabel scorelabel;
     private FlyingObjectController flyingObjectController;
+    private RandomEventController randomEventController;
     private PassiveIncomeService passiveIncomeService;
 
     public GameplayScreen(TutorialClickerGame game) {
@@ -31,10 +33,12 @@ public class GameplayScreen extends AbstractScreen {
         initResetScoreButton();
         initScorelabel();
         initFlyingObjectController();
+        initRandomEventController();
         initPassiveIncomeService();
         initPassiveIncomeInfoDialog();
         startTheMusic();
     }
+
 
 
     @Override
@@ -51,6 +55,10 @@ public class GameplayScreen extends AbstractScreen {
     public void pause() {
         super.pause();
         game.getScoreService().saveCurrentGameState();
+    }
+
+    private void initRandomEventController() {
+        randomEventController = new RandomEventController(game);
     }
 
     private void initPassiveIncomeInfoDialog() {

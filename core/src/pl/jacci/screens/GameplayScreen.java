@@ -6,6 +6,7 @@ import pl.jacci.controllers.FlyingObjectController;
 import pl.jacci.controllers.RandomEventController;
 import pl.jacci.entities.Player;
 import pl.jacci.TutorialClickerGame;
+import pl.jacci.service.FeatureFlagService;
 import pl.jacci.service.PassiveIncomeService;
 import pl.jacci.ui.*;
 
@@ -36,9 +37,9 @@ public class GameplayScreen extends AbstractScreen {
         initRandomEventController();
         initPassiveIncomeService();
         initPassiveIncomeInfoDialog();
+        startShop();
         startTheMusic();
     }
-
 
 
     @Override
@@ -55,6 +56,15 @@ public class GameplayScreen extends AbstractScreen {
     public void pause() {
         super.pause();
         game.getScoreService().saveCurrentGameState();
+    }
+
+    private void startShop() {
+        if(game.getFeatureFlagService().hasFeature(FeatureFlagService.FEATURE_SHOP)){
+            game.getShopService().dummyMethod();
+        }
+        else{
+            System.out.println("startShop - Feature not found");
+        }
     }
 
     private void initRandomEventController() {

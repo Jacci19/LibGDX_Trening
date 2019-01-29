@@ -6,6 +6,7 @@ import com.badlogic.gdx.Preferences;
 import pl.jacci.screens.SplashScreen;
 import pl.jacci.service.FeatureFlagService;
 import pl.jacci.service.ScoreService;
+import pl.jacci.service.ShopService;
 import pl.jacci.service.SoundService;
 
 public class TutorialClickerGame extends Game {
@@ -17,6 +18,7 @@ public class TutorialClickerGame extends Game {
 	private SoundService soundService;
 	private ScoreService scoreService;
 	private FeatureFlagService featureFlagService;							//serwis w necie z którego będziemy pobierać potrzebne w grze dane
+	private ShopService shopService;
 	private boolean paused;
 
 	@Override
@@ -29,6 +31,11 @@ public class TutorialClickerGame extends Game {
 		initSoundService();
 		initScoreService();
 		initFeatureFlagService();
+		initShopService();
+	}
+
+	private void initShopService() {
+		ShopService shopService = new ShopService();
 	}
 
 	private void initFeatureFlagService() {
@@ -64,5 +71,9 @@ public class TutorialClickerGame extends Game {
 
 	public FeatureFlagService getFeatureFlagService() {
 		return featureFlagService;
+	}
+
+	public ShopService getShopService() {
+		return shopService;
 	}
 }

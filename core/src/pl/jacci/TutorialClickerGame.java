@@ -4,6 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import pl.jacci.screens.SplashScreen;
+import pl.jacci.service.FeatureFlagService;
 import pl.jacci.service.ScoreService;
 import pl.jacci.service.SoundService;
 
@@ -15,11 +16,8 @@ public class TutorialClickerGame extends Game {
 
 	private SoundService soundService;
 	private ScoreService scoreService;
-
-
+	private FeatureFlagService featureFlagService;							//serwis w necie z którego będziemy pobierać potrzebne w grze dane
 	private boolean paused;
-	//private int points;
-	//private Preferences prefs;
 
 	@Override
 	public void create () {
@@ -30,6 +28,11 @@ public class TutorialClickerGame extends Game {
 	private void init(){
 		initSoundService();
 		initScoreService();
+		initFeatureFlagService();
+	}
+
+	private void initFeatureFlagService() {
+		featureFlagService = new FeatureFlagService();
 	}
 
 	private void initScoreService() {
@@ -39,12 +42,6 @@ public class TutorialClickerGame extends Game {
 	private void initSoundService() {
 		soundService = new SoundService();
 	}
-
-	public void addPassiveIncome() {
-		//TODO add passive
-		System.out.println("passive income click");
-	}
-
 
 
 	//Gettery i settery
@@ -63,5 +60,9 @@ public class TutorialClickerGame extends Game {
 
 	public ScoreService getScoreService() {
 		return scoreService;
+	}
+
+	public FeatureFlagService getFeatureFlagService() {
+		return featureFlagService;
 	}
 }

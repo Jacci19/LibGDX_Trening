@@ -61,7 +61,7 @@ public class FeatureFlagService {
 
         } catch (JSONException e) {
             //e.printStackTrace();
-            System.out.println("Tu parsowanie danych z netu nie działa bo na serwerze M.Kupilasa nie ma już danych do tego kursu");
+            System.out.println("FeatureFlagService - Tu parsowanie danych z netu nie działa bo na serwerze M.Kupilasa nie ma już danych do tego kursu");
         }
     }
 

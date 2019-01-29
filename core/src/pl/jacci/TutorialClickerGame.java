@@ -4,10 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import pl.jacci.screens.SplashScreen;
-import pl.jacci.service.FeatureFlagService;
-import pl.jacci.service.ScoreService;
-import pl.jacci.service.ShopService;
-import pl.jacci.service.SoundService;
+import pl.jacci.service.*;
 
 public class TutorialClickerGame extends Game {
 
@@ -18,6 +15,7 @@ public class TutorialClickerGame extends Game {
 	private SoundService soundService;
 	private ScoreService scoreService;
 	private FeatureFlagService featureFlagService;							//serwis w necie z którego będziemy pobierać potrzebne w grze dane
+	private BalanceService balanceService;							    //serwis w necie z którego będziemy pobierać dane do balansu gry
 	private ShopService shopService;
 	private boolean paused;
 
@@ -31,10 +29,15 @@ public class TutorialClickerGame extends Game {
 		initSoundService();
 		initScoreService();
 		initFeatureFlagService();
+		initBalanceService();
 		initShopService();
 	}
 
-	private void initShopService() {
+    private void initBalanceService() {
+	    balanceService = new BalanceService();
+    }
+
+    private void initShopService() {
 		ShopService shopService = new ShopService();
 	}
 
@@ -73,7 +76,11 @@ public class TutorialClickerGame extends Game {
 		return featureFlagService;
 	}
 
-	public ShopService getShopService() {
+    public BalanceService getBalanceService() {
+        return balanceService;
+    }
+
+    public ShopService getShopService() {
 		return shopService;
 	}
 }

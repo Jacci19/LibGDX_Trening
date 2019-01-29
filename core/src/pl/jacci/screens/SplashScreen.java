@@ -39,10 +39,22 @@ public class SplashScreen extends AbstractScreen{
             @Override
             public void onSucceed() {
                 showError = false;
-                Gdx.app.postRunnable(new Runnable() {                                       //jest, aby uniknąć błędu: No OpenGL context found in the current thread.
-                    @Override                                                                   //https://youtu.be/ntVzGRIOvl4?list=PLFq6ri1W22hwmA0FzkR5zPPOnsimwUc9P&t=1525
-                    public void run() {
-                        game.setScreen(new GameplayScreen(game));
+
+                game.getBalanceService().makeBalanceServiceRequest(new IRequestCallback() {
+
+                    @Override
+                    public void onSucceed() {
+                        Gdx.app.postRunnable(new Runnable() {                                       //jest, aby uniknąć błędu: No OpenGL context found in the current thread.
+                            @Override                                                               //https://youtu.be/ntVzGRIOvl4?list=PLFq6ri1W22hwmA0FzkR5zPPOnsimwUc9P&t=1525
+                            public void run() {
+                                game.setScreen(new GameplayScreen(game));
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onError() {
+                        showError = true;
                     }
                 });
             }

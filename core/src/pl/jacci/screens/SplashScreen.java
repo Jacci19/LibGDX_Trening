@@ -19,14 +19,12 @@ public class SplashScreen extends AbstractScreen{
     public SplashScreen(final TutorialClickerGame game) {
         super(game);
 
-/*
-        Timer.schedule(new Task() {
-            @Override
-            public void run() {                                 //to wykona się po czasie 1s
-                game.setScreen(new GameplayScreen(game));
-            }
-        }, 1);
-*/
+//        Timer.schedule(new Task() {
+//            @Override
+//            public void run() {                                 //to wykona się po czasie 1s
+//                game.setScreen(new GameplayScreen(game));
+//            }
+//        }, 1);
     }
 
     @Override

@@ -3,14 +3,24 @@ package pl.jacci.service;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Net;
 import com.badlogic.gdx.net.HttpRequestBuilder;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import pl.jacci.ui.IRequestCallback;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class FeatureFlagService {
 
     public static final String REQUEST_URL = "http://javadevmatt.pythonanywhere.com/tutorialclicker/api/v1.0/features";
     public static final String FEATURE_SHOP = "FEATURE_SHOP";
 
-    private boolean shop = false;
+    private Map<String, Boolean> featuresMap;
+
+    public FeatureFlagService(){
+        featuresMap = new HashMap<String, Boolean>();
+    }
 
     public void makeFeatureFlagsRequest(final IRequestCallback requestCallback){                                //https://youtu.be/ntVzGRIOvl4?list=PLFq6ri1W22hwmA0FzkR5zPPOnsimwUc9P&t=987
         HttpRequestBuilder requestBuilder = new HttpRequestBuilder();
@@ -19,10 +29,8 @@ public class FeatureFlagService {
 
             @Override
             public void handleHttpResponse(Net.HttpResponse httpResponse) {
-                System.out.println("Result:");
-                System.out.println(httpResponse.getResultAsString());
-                System.out.println("----------------------");
 
+                parseResponse(httpResponse.getResultAsString());
                 requestCallback.onSucceed();
             }
 
@@ -38,15 +46,32 @@ public class FeatureFlagService {
             }
         });    }
 
+    private void parseResponse(String resultAsString) {                         //tu parsowanie nie działa bo na serwerze Kupilasa nie ma już danych do tego kursu ( //https://youtu.be/9fIkdag8INU?list=PLFq6ri1W22hwmA0FzkR5zPPOnsimwUc9P&t=685)
 
-    //GETTERY
+        //System.out.println("___serwer M. Kupilasa:____\n" + resultAsString + "\n______________________");       //pokazuje zawrtość serwera M. Kupilasa
 
-    public boolean hasShop() {
-        return shop;
+        try {
+            JSONObject obj = new JSONObject(resultAsString);
+            JSONArray jsonArray = obj.getJSONArray("features");
+            for(int i = 0; i < jsonArray.length(); i++){
+                JSONObject innerObj = jsonArray.getJSONObject(i);
+                featuresMap.put((String)innerObj.get("name"), (Boolean)innerObj.get("active"));
+            }
+            System.out.println("Parsed map: " + featuresMap);
+
+        } catch (JSONException e) {
+            //e.printStackTrace();
+            System.out.println("Tu parsowanie danych z netu nie działa bo na serwerze M.Kupilasa nie ma już danych do tego kursu");
+        }
     }
 
-    public void setShop(boolean shop) {
-        this.shop = shop;
+
+    public boolean hasFeature(String s){
+        if(!featuresMap.containsKey(s)){    //Czy dany klucz jest w tej mapie
+            return false;
+        } else {
+            return featuresMap.get(s);
+        }
     }
 }
 

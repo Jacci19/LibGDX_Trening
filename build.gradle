@@ -74,6 +74,8 @@ project(":core") {
 
     dependencies {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
+        // https://mvnrepository.com/artifact/org.json/json
+        compile group: 'org.json', name: 'json', version: '20160810'        //dodane aby móc parsować dane z net serwisu przez jsona (https://youtu.be/9fIkdag8INU?list=PLFq6ri1W22hwmA0FzkR5zPPOnsimwUc9P&t=75)
         
     }
 }

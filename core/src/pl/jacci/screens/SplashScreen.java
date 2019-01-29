@@ -14,7 +14,8 @@ import pl.jacci.ui.IRequestCallback;
 
 public class SplashScreen extends AbstractScreen{
 
-    private Texture splashImg;
+    private Texture splashImg, noInternetImg;
+    private boolean showError = false;
 
     public SplashScreen(final TutorialClickerGame game) {
         super(game);
@@ -31,11 +32,13 @@ public class SplashScreen extends AbstractScreen{
     protected void init(){
         //TODO implement better assets loading when game grows
         splashImg = new Texture("android/assets/splash.png");
+        noInternetImg = new Texture("android/assets/nointernet.png");
 
 
         game.getFeatureFlagService().makeFeatureFlagsRequest(new IRequestCallback() {
             @Override
             public void onSucceed() {
+                showError = false;
                 Gdx.app.postRunnable(new Runnable() {                                       //jest, aby uniknąć błędu: No OpenGL context found in the current thread.
                     @Override                                                                   //https://youtu.be/ntVzGRIOvl4?list=PLFq6ri1W22hwmA0FzkR5zPPOnsimwUc9P&t=1525
                     public void run() {
@@ -47,6 +50,7 @@ public class SplashScreen extends AbstractScreen{
             @Override
             public void onError() {
                 // TODO make some error message
+                showError = true;
                 System.out.println("!!!  Błąd połączenia z internetem   !!!");
             }
         });
@@ -57,7 +61,11 @@ public class SplashScreen extends AbstractScreen{
         super.render(delta);
 
         spriteBatch.begin();
-        spriteBatch.draw(splashImg, 0, 0);
+        if(showError){
+            spriteBatch.draw(noInternetImg, 0, 0);                  //jak nie ma internetu to wyświetli się odwrócona sowa i gra nie rozpocznie się
+        } else {
+            spriteBatch.draw(splashImg, 0, 0);
+        }
         spriteBatch.end();
     }
 }

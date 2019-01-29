@@ -3,9 +3,9 @@ package pl.jacci.ui;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 
-public class ScoreLabel extends Label {
+public class GameLabel extends Label {
 
-    public ScoreLabel(){
+    public GameLabel(){
         super("", prepareLabelStyle());
         init();
     }

@@ -15,7 +15,7 @@ public class GameplayScreen extends AbstractScreen {
     private Player player;
     private PlayerButton playerButton;
     private ResetScoreButton resetScoreButton;
-    private ScoreLabel scorelabel;
+    private GameLabel scorelabel;
     private FlyingObjectController flyingObjectController;
     private PassiveIncomeService passiveIncomeService;
 
@@ -32,8 +32,10 @@ public class GameplayScreen extends AbstractScreen {
         initScorelabel();
         initFlyingObjectController();
         initPassiveIncomeService();
+        initPassiveIncomeInfoDialog();
         startTheMusic();
     }
+
 
     @Override
     public void render(float delta) {
@@ -50,6 +52,14 @@ public class GameplayScreen extends AbstractScreen {
         super.pause();
         game.getScoreService().saveCurrentGameState();
     }
+
+    private void initPassiveIncomeInfoDialog() {
+        if(passiveIncomeService.getPointsToAdd() > 0){
+            BasicDialog basicDialog = new BasicDialog();
+            stage.addActor(basicDialog);
+            basicDialog.initContent("Passive income gained: " + passiveIncomeService.getPointsToAdd());
+        }    }
+
 
     private void initPassiveIncomeService() {
         passiveIncomeService = new PassiveIncomeService(game.getScoreService());
@@ -97,7 +107,7 @@ public class GameplayScreen extends AbstractScreen {
     }
 
     private void initScorelabel() {
-        scorelabel = new ScoreLabel();
+        scorelabel = new GameLabel();
         stage.addActor(scorelabel);
     }
 

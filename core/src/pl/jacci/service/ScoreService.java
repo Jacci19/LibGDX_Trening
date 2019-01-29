@@ -23,18 +23,6 @@ public class ScoreService {
         prefs =  Gdx.app.getPreferences(GAME_PREFS);
         loadScore();
         loadPassiveIncome();
-        calculateGainedPassiveIncome();
-    }
-
-    private void calculateGainedPassiveIncome() {
-        long savedTimestamp = getSavedTimestamp();
-        if(savedTimestamp > 0){                                                         //jeśli były już wcześniej zapisane timestampy...
-            long millisPassed = TimeUtils.timeSinceMillis(savedTimestamp);
-            long seconds = TimeUnit.MILLISECONDS.toSeconds(millisPassed);
-            System.out.println("Passed seconds:" + seconds);
-        } else {
-            // do nothing
-        }
     }
 
     private void loadScore() {
@@ -72,7 +60,7 @@ public class ScoreService {
         updateSavedScoreAndPassiveIncomeInPrefs();
     }
 
-    private long getSavedTimestamp(){
+    public long getSavedTimestamp(){
         return prefs.getLong(GAME_SAVED_TIMESTAMP);
     }
 

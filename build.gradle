@@ -23,7 +23,7 @@ allprojects {
     version = '1.0'
     ext {
         appName = "TutorialClicker"
-        gdxVersion = '1.9.3'                //zmieniłem z '1.9.9'  (https://youtu.be/LyrFg_Y0MYs?list=PLFq6ri1W22hwmA0FzkR5zPPOnsimwUc9P&t=607)
+        gdxVersion = '1.9.9'                //zmieniłem z '1.9.9'  (https://youtu.be/LyrFg_Y0MYs?list=PLFq6ri1W22hwmA0FzkR5zPPOnsimwUc9P&t=607)
         roboVMVersion = '2.3.5'             //tu możesz zmienić na 2.1.0 żeby było tak jak w kursie
         box2DLightsVersion = '1.4'
         ashleyVersion = '1.7.0'
@@ -47,6 +47,7 @@ project(":desktop") {
         compile project(":core")
         compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+        compile "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"       //dodanie skalowalnych fontów ()
         
     }
 }
@@ -76,7 +77,7 @@ project(":core") {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
         // https://mvnrepository.com/artifact/org.json/json
         compile group: 'org.json', name: 'json', version: '20160810'        //dodane aby móc parsować dane z net serwisu przez jsona (https://youtu.be/9fIkdag8INU?list=PLFq6ri1W22hwmA0FzkR5zPPOnsimwUc9P&t=75)
-        
+        compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"            //dodanie skalowalnych fontów ()
     }
 }
 

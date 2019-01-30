@@ -1,5 +1,6 @@
 package pl.jacci.screens;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import pl.jacci.controllers.FlyingObjectController;
@@ -125,7 +126,7 @@ public class GameplayScreen extends AbstractScreen {
     }
 
     private void initScorelabel() {
-        scorelabel = new GameLabel();
+        scorelabel = new GameLabel(Color.BLACK);
         stage.addActor(scorelabel);
     }
 

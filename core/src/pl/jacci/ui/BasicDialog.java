@@ -1,5 +1,6 @@
 package pl.jacci.ui;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -13,18 +14,18 @@ public class BasicDialog extends Image {
 
     private GameLabel label;
 
-    private final static int WIDHT = 380;
-    private final static int HEIGHT = 400;
+    private final static int WIDHT = 340;
+    private final static int HEIGHT = 100;
 
     public BasicDialog(){
         super(new Texture("android/assets/dialog.png"));
 
         this.setOrigin(WIDHT / 2, HEIGHT / 2);
         this.setSize(WIDHT, HEIGHT);
-        this.setPosition(60, 200);
+        this.setPosition(80, 180);
 
-        label = new GameLabel();
-        label.setPosition(100, 400);
+        label = new GameLabel(Color.BROWN);
+        label.setPosition(100, 230);
 
         this.addListener(new ClickListener(){
             @Override
@@ -35,10 +36,10 @@ public class BasicDialog extends Image {
         });
     }
 
-    public void initContent(String text){
-        label.setText(text);
-        this.getStage().addActor(label);
-    }
+//    public void initContent(String text){
+//        label.setText(text);
+//        this.getStage().addActor(label);
+//    }
 
     public  void showDialog(Stage stage, String text){
         stage.addActor(this);
@@ -48,7 +49,7 @@ public class BasicDialog extends Image {
 
     private void fadeOutDialog() {
         SequenceAction sequence = Actions.sequence();
-        sequence.addAction(Actions.fadeOut(1.5f));
+        sequence.addAction(Actions.fadeOut(0.5f));
         sequence.addAction(new Action() {
 
             @Override
@@ -59,7 +60,7 @@ public class BasicDialog extends Image {
             }
         });
         this.addAction(sequence);
-        label.addAction(Actions.fadeOut(1.5f));
+        label.addAction(Actions.fadeOut(0.5f));
 
     }
 }

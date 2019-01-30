@@ -15,10 +15,10 @@ public class ResetScoreButton extends Button {
     }
 
     private void init(final IClickCallback callback) {
-        this.setWidth(100);
-        this.setHeight(100);
-        this.setX(330);
-        this.setY(560);
+        this.setWidth(60);
+        this.setHeight(20);
+        this.setX(410);
+        this.setY(650);
         //this.setDebug(true);                          //niebieski prostokąt
 
         this.addListener(new ClickListener(){

@@ -27,4 +27,7 @@ cherry pick - polecenie w git do wrzucenia danego commita do danego branchu
 
 Aby uruchomić ten projekt na kompie w domu:
 1. Urochimiłem intellij z opcją checkout from version control. Wkleiłem tytuł "LibGdx_Trening" i link do gita i uruchomiłem.
-2. Przed otwarciem projektu w intellij z pliku build.gradle skopiowałem do katalogu LibGdx_Trening plik local.properties zawierający ścieżkę do Android SDK.
+2. Przed otwarciem projektu w intellij z pliku build.gradle, skopiowałem do katalogu LibGdx_Trening plik local.properties zawierający ścieżkę do Android SDK.
+
+
+Aby otworzyć ten projekt (jeśli jest już na naszym dysku, wybieram open project a następnie wskazuję build.gradle. Potem nie zaznaczam auto-import, potem klikam open existing project.
